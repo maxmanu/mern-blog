@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function OAuth() {
   const auth = getAuth(app);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleGoogleClick = async () => {
     const provider = new GoogleAuthProvider();
@@ -28,7 +29,7 @@ export default function OAuth() {
       const data = await res.json();
       if (res.ok) {
         dispatch(signInSuccess(data));
-        Navigate("/");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
